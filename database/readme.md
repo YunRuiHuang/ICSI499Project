@@ -4,11 +4,25 @@ Include A MYSQL database and a Express JS web API interface
 
 ## database
 
+### MYSQL setup
+
+**we will set up the database in the docker**
+
+```shell
+docker network create my-network
+#setup a local network for docker
+
+docker run --name mysql --network my-network -p 3000:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql 
+#set up the last version mysql at port 3000
+```
+
+
+
 ### User table
 
 ```sql
 CREATE TABLE users (
-  user_id INT NOT NULL PRIMARY KEY,
+  user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   user_name VARCHAR(50) NOT NULL,
   real_name VARCHAR(50),
   email VARCHAR(100) NOT NULL,
@@ -21,16 +35,10 @@ CREATE TABLE users (
 );
 
 ALTER TABLE users
-ADD CONSTRAINT unique_user_name UNIQUE (user_name);
-
-ALTER TABLE users
 ADD CONSTRAINT unique_email UNIQUE (email);
 
-ALTER TABLE users
-ADD CONSTRAINT unique_location UNIQUE (location);
-
-ALTER TABLE users
-ADD CONSTRAINT check_password CHECK (LEN(password) = 64);
+ALTER TABLE users 
+ADD CONSTRAINT check_password_length CHECK (LENGTH(password) = 64);
 
 ```
 
@@ -55,7 +63,7 @@ Note that the data type for the profile image ID may vary depending on how you p
 
 ```sql
 CREATE TABLE items (
-  item_id INT NOT NULL PRIMARY KEY,
+  item_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   item_name VARCHAR(50) NOT NULL,
   item_keywords VARCHAR(200),
@@ -94,14 +102,10 @@ Note that you may want to consider additional constraints or indexes based on yo
 
 ```sql
 CREATE TABLE keyword_map (
-  keyword_id INT NOT NULL PRIMARY KEY,
+  keyword_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   keyword VARCHAR(20) NOT NULL,
-  item_id INT NOT NULL,
-  CONSTRAINT fk_item_id FOREIGN KEY (item_id) REFERENCES items (item_id)
+  item_id INT NOT NULL
 );
-
-ALTER TABLE keyword_map
-ADD CONSTRAINT unique_keyword_item UNIQUE (keyword, item_id);
 
 ```
 
@@ -120,7 +124,44 @@ Note that you may want to consider additional constraints or indexes based on yo
 
 ## Web API Interface
 
+### Interface setup
+
+```shell
+cd ~/ICSI499Project/database
+#move to the database file, you should see a Dockerfile
+
+docker build -t my-express-app .
+#using the dockerfile to build a image in docker
+
+docker run --name express-container --network my-network -p 3001:3001 -d my-express-app
+#set up the interface at port 3001, now you access localhost:3001/ you should see a test:"success" which means success setup the interface server
+
+```
+
+
+
+
+
 ### User
+
+User post body :
+
+```json
+{
+  userName: [string(50)], //not null
+  realName: [string(50)],
+  email: [string(100)], //not null
+  location: [string(200)], //not null
+  profileImgId: [INT],
+  bio: [string],
+  password: [string(64)], //not null
+  other: [string(200)]
+}
+```
+
+
+
+
 
 - Add User
 
@@ -142,7 +183,7 @@ Note that you may want to consider additional constraints or indexes based on yo
 
     summary: delete the user from the database, return to home page
 
-    description: This method require to login to this user before delete it. And, the *body* require user name, user password, user email, cookie id and timestamp
+    description: This method require to login to this user before delete it. And, the *body* require user name, user password, user email
 
     
 
@@ -160,7 +201,7 @@ Note that you may want to consider additional constraints or indexes based on yo
 
 - Search User (by id)
 
-  - PATH = /user/:id
+  - PATH = /user/id/:id
 
   - method = GET
 
@@ -170,9 +211,24 @@ Note that you may want to consider additional constraints or indexes based on yo
 
 
 
+- Search User (by name)
+
+  - PATH = /user/name
+  
+  
+    - method = GET
+  
+      summary: find the user and return a list of user
+  
+      description: This method use to jump to the user list page
+  
+      
+  
+
+
 - Check Password
 
-  - PATH = /user/password
+  - PATH = /user/password/:id
 
   - method = GET
 
@@ -206,6 +262,19 @@ Note that you may want to consider additional constraints or indexes based on yo
 
 
 
+- Check Item List
+
+  - PATH = /user/:id/setList
+
+
+  - method = GET
+
+    summary: check the user item list status, return JSON of user status
+
+    description: check the user item list is on or off, which default as off. after turn on, user can post item
+
+
+
 - Delete Item List
 
   - PATH = /user/:id/setList
@@ -219,6 +288,20 @@ Note that you may want to consider additional constraints or indexes based on yo
 
 
 ### Item
+
+```json
+{
+  userId: [INT], //NOT NULL
+  itemName: [string(50)],  //NOT NULL
+  itemKeywords: ArrayList[string(20)],
+  itemLocation: [string(200)], //NOT NULL
+  itemDescription: [string],
+  itemImgId: [INT],
+  other: [string(200)]
+}
+```
+
+
 
 - Add Item
 

@@ -1,0 +1,22 @@
+{
+    "connection":{
+        "connectionLimit": 10,
+        "host": "mysql",
+        "user": "root",
+        "password": "password"
+    },
+    "usertable": [
+        "CREATE TABLE users (user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,user_name VARCHAR(50) NOT NULL,real_name VARCHAR(50),email VARCHAR(100) NOT NULL,location VARCHAR(200) NOT NULL,profile_img_id VARCHAR(100),bio TEXT,password VARCHAR(64) NOT NULL,has_items_list BOOLEAN NOT NULL DEFAULT false,other_info VARCHAR(200))",
+        "ALTER TABLE users ADD CONSTRAINT unique_email UNIQUE (email)",
+        "ALTER TABLE users ADD CONSTRAINT check_password_length CHECK (LENGTH(password) = 64)"
+    ],
+    "itemtable":[
+        "CREATE TABLE items (item_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,user_id INT NOT NULL,item_name VARCHAR(50) NOT NULL,item_keywords VARCHAR(200),item_location VARCHAR(200) NOT NULL,item_description TEXT,item_img_id VARCHAR(100),other_info VARCHAR(200))",
+        "ALTER TABLE items ADD CONSTRAINT unique_item_name UNIQUE (user_id, item_name)",
+        "ALTER TABLE items ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users (user_id)"
+    ],
+    "keywordmaptable":[
+        "CREATE TABLE keyword_map (keyword_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,keyword VARCHAR(20) NOT NULL,item_id INT NOT NULL)"
+    ]
+    
+}
