@@ -152,7 +152,7 @@ User post body :
   realName: [string(50)],
   email: [string(100)], //not null
   location: [string(200)], //not null
-  profileImgId: [INT],
+  profileImgId: [string(100)],
   bio: [string],
   password: [string(64)], //not null
   other: [string(200)]
@@ -169,9 +169,37 @@ User post body :
 
   - method = POST
 
-    summary: post the information of new user, return to login page
+    summary: post the information of new user, return user id or err
 
-    description: post the new user information in *body*, including User_name, Email, Password. 
+    description: post the new user information in *body*, including User_name, Email, location and Password. 
+
+Example:
+
+body:
+
+```json
+{
+    "userName": "test user", 
+    "realName": "test name",
+    "email": "test@email.com", 
+    "location": "testing location", 
+    "profileImgId": null,
+    "bio": "test bio",
+    "password": "passwordpasswordpasswordpasswordpasswordpasswordpasswordpassword",
+    "other": null,
+}
+```
+
+return:
+
+​	success:
+
+```json
+```
+
+
+
+​	err:
 
 
 
@@ -181,9 +209,9 @@ User post body :
 
   - method = DELETE
 
-    summary: delete the user from the database, return to home page
+    summary: delete the user from the database, return success or err
 
-    description: This method require to login to this user before delete it. And, the *body* require user name, user password, user email
+    description: This method require most of information of this user before delete it. In the *body* require user name, user password, user email, all the information should match to delete it.
 
     
 
@@ -193,9 +221,9 @@ User post body :
 
   - method = PUT
 
-    summary: update the user information to database, return to user profile
+    summary: update the user information to database, return success or err
 
-    description: This method require user login first. And the *body* including all the user information other than **password**, the cookie id and timestamp also require.
+    description: This method require user login first. And the *body* including all the user information, the password and user id is use to find the correct user, which should not be edit.
 
 
 
@@ -205,9 +233,9 @@ User post body :
 
   - method = GET
 
-    summary: find the user and jump to it home page
+    summary: find the user and return user information or err
 
-    description: This method use to jump to the user information page
+    description: This method use to get the user information by id
 
 
 
@@ -218,9 +246,9 @@ User post body :
   
     - method = GET
   
-      summary: find the user and return a list of user
+      summary: find the user and return a list of user information
   
-      description: This method use to jump to the user list page
+      description: This method use to find a user when only know the user name, which will return a list of user because user name isn't unique. In the *body* should has user name value.
   
       
   
@@ -232,9 +260,9 @@ User post body :
 
   - method = GET
 
-    summary: this use to check the user password correct or not, return JSON
+    summary: this use to check the user password correct or not, return the password match or not
 
-    description: This method use to check the password, response (200) as success, (203) as password or user error. The user can identify by user id or email
+    description: This method use to check the password, response (200) as success, (203) as password or user error. The *body* should contain password value.
 
 
 
@@ -246,7 +274,7 @@ User post body :
 
     summary: update the new password of the user to database, return to user profile
 
-    description: This method require user login first. The user id, old password, new password, and the cookie id and timestamp also require.
+    description: This method require user login first. The user id, old password, new password in *body*.
 
 
 
@@ -258,20 +286,21 @@ User post body :
 
     summary: turn the user item list as on, return JSON of user status
 
-    description: turn the user item list as on, which default as off. after turn on, user can post item
+    description: turn the user item list as on, which default as off. after turn on, user can post item. require password in the *body*
 
 
 
 - Check Item List
 
   - PATH = /user/:id/setList
-
-
-  - method = GET
-
-    summary: check the user item list status, return JSON of user status
-
-    description: check the user item list is on or off, which default as off. after turn on, user can post item
+  
+  
+    - method = GET
+  
+      summary: check the user item list status, return JSON of user status
+  
+      description: check the user item list is on or off, which default as off. after turn on, user can post item
+  
 
 
 
@@ -283,7 +312,7 @@ User post body :
 
     summary: turn the user item list as off, return JSON of user status
 
-    description: turn the user item list as off, user would not allow to post item, also **ALL** the item own by this user will be delete
+    description: turn the user item list as off, user would not allow to post item, also **ALL** the item own by this user will be delete. require password in the *body*
 
 
 
@@ -296,7 +325,7 @@ User post body :
   itemKeywords: ArrayList[string(20)],
   itemLocation: [string(200)], //NOT NULL
   itemDescription: [string],
-  itemImgId: [INT],
+  itemImgId: [string(100)],
   other: [string(200)]
 }
 ```
@@ -309,9 +338,9 @@ User post body :
 
   - method = POST
 
-    summary: post a new item under the user item list, return to user item page
+    summary: post a new item under the user item list, return the item id or err
 
-    description: post the new item information in *body*, including item name, item location
+    description: post the new item information in *body*, including user id, item name, item location
 
 
 
@@ -321,9 +350,9 @@ User post body :
 
   - method = DELETE
 
-    summary: delete the item from the database, return to user item page
+    summary: delete the item from the database, return success or err
 
-    description: This method require the item owner first login, in *body* should including the cookie id and timestamp to identify the user is owner
+    description: This method only require the item id to delete item, would not check other information
 
 
 
@@ -333,23 +362,60 @@ User post body :
 
   - method = PUT
 
-    summary: update the item information, return JSON of item
+    summary: update the item information, return success or err
 
-    description: This method require the item owner first login, in *body* should including user id, item name, item location, and the cookie id and timestamp to identify the user is owner
+    description: This method require the item id, in *body* should including user id, item name, item location.
+
+
+
+- Search Item (by user id)
+
+  - PATH = /item/userid/:userId
+
+  - method = GET
+
+    summary: Search items from database base on user id, return items information list
+
+    description: This method using the user id to search all the items under this user id.
+
+
+
+- Search Item (by item id)
+
+  - PATH = /item/itemid/:itemId
+
+
+  - method = GET
+
+    summary: Search items from database base on item id, return item information or err
+
+    description: This method using the item id to search item.
+
+
+
+- Search Item (by item name)
+
+  - PATH = /item/name
+
+
+  - method = GET
+
+    summary: Search items from database base on name, return items information list
+
+    description:  This method using the item name to search all the items with this item name.
 
 
 
 - Search Item
 
-  - PATH = /item
+  - PATH = /item/keyword
+
 
   - method = GET
 
-    summary: Search items from database base on keyword, return JSON list
+    summary: Search items from database base on keyword, return item id list
 
-    description: This method can receive a list of keyword and return a list of item id which sort by the most similarly (which the keyword show up the most) , in *body* require a value **keyword** as a list which contain list of keyword
-
-
+    description: This method can receive a list of keyword and return a list of item id which sort by the most similarly (which the keyword show up the most) and how many times this id show up as times value , in *body* require a value **keyword** as a list which contain list of keyword
 
 
 
