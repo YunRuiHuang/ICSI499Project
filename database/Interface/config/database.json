@@ -1,8 +1,7 @@
 {
     "connection":{
         "connectionLimit": 10,
-        "host": "127.0.0.1",
-        "port": 3000,
+        "host": "mysql",
         "user": "root",
         "password": "password"
     },
