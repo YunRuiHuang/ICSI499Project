@@ -124,13 +124,30 @@ router.get("/name",(req,res)=>{
 });
 
 // Check Password
-router.get("/password/:id",(req,res)=>{
+router.get("/password/id/:id",(req,res)=>{
     var sql = "select * from users where user_id = '" + req.params.id + "' AND  password ='" + req.body.password + "';";
     SQL.runsql(sql).then((result)=>{
         if(result.rows[0]){
             res.status(200).json(result.rows[0]);
         }else{
             res.status(203).json({result:"user or password error"});
+        }
+        
+    },(err)=>{
+        res.status(400).json(err);
+    })
+
+});
+
+// Check Password (via email)
+router.get("/password/email",(req,res)=>{
+    var sql = "select * from users where email = '" + req.body.email + "' AND  password ='" + req.body.password + "';";
+    console.log(sql);
+    SQL.runsql(sql).then((result)=>{
+        if(result.rows[0]){
+            res.status(200).json(result.rows[0]);
+        }else{
+            res.status(203).json({result:"user or password error",SQL:sql});
         }
         
     },(err)=>{

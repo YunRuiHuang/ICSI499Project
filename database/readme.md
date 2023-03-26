@@ -256,7 +256,19 @@ return:
 
 - Check Password
 
-  - PATH = /user/password/:id
+  - PATH = /user/password/id/:id
+
+  - method = GET
+
+    summary: this use to check the user password correct or not, return the password match or not
+
+    description: This method use to check the password, response (200) as success, (203) as password or user error. The *body* should contain password value.
+
+
+
+- Check Password (via email)
+
+  - PATH = /user/password/email
 
   - method = GET
 
