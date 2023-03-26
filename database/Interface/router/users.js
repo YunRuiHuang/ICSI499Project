@@ -114,7 +114,7 @@ router.get("/id/:id",(req,res)=>{
 });
 
 // Search User (by name)
-router.get("/name",(req,res)=>{
+router.post("/name",(req,res)=>{
     var sql = "select * from users where user_name = '" + req.body.userName + "';";
     SQL.runsql(sql).then((result)=>{
         res.status(200).json(result.rows);
@@ -124,7 +124,7 @@ router.get("/name",(req,res)=>{
 });
 
 // Check Password
-router.get("/password/id/:id",(req,res)=>{
+router.post("/password/id/:id",(req,res)=>{
     var sql = "select * from users where user_id = '" + req.params.id + "' AND  password ='" + req.body.password + "';";
     SQL.runsql(sql).then((result)=>{
         if(result.rows[0]){
@@ -140,7 +140,7 @@ router.get("/password/id/:id",(req,res)=>{
 });
 
 // Check Password (via email)
-router.get("/password/email",(req,res)=>{
+router.post("/password/email",(req,res)=>{
     var sql = "select * from users where email = '" + req.body.email + "' AND  password ='" + req.body.password + "';";
     console.log(sql);
     SQL.runsql(sql).then((result)=>{

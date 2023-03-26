@@ -142,7 +142,7 @@ router.get("/itemid/:itemId",(req,res)=>{
 });
 
 // Search Item (by name)
-router.get("/name",(req,res)=>{
+router.post("/search/name",(req,res)=>{
     var sql = "SELECT * FROM items WHERE item_name = " + check_null(req.body.itemName) + ";";
     SQL.runsql(sql).then((result)=>{
         res.status(200).json(result);
@@ -152,7 +152,7 @@ router.get("/name",(req,res)=>{
 });
 
 // Search Item (by keyword)
-router.get("/keyword",(req,res)=>{
+router.post("/search/keyword",(req,res)=>{
     if(!req.body.itemKeywords){
         req.status(400).json({err:"missing keywords"});
     }else{
