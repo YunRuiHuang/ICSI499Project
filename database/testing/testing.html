@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>test html</title>
+
+</head>
+<body>
+    <h1>testing html</h1>
+    <p>data:</p>
+    <p id="input"></p>
+</body>
+
+<script>
+    fetch("http://127.0.0.1:3001/user/id/1").then(function(response) {
+  return response.json();
+}).then(function(data) {
+  console.log(data);
+  document.getElementById("input").innerText=data.user_name;
+}).catch(function(err) {
+  console.log('Fetch Error :-S', err);
+});
+
+//   document.getElementById("input").innerText="test";
+
+</script>
+
+</html>
