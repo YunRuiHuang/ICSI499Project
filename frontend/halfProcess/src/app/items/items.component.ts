@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import {ItemService} from "./item.service";
+import {ItemService} from "../shared/services/item.service";
+import {Item} from "../shared/item.model";
 
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.css'],
-  providers: [ItemService]
 })
 export class ItemsComponent {
+
 
 }

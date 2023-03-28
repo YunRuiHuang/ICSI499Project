@@ -1,15 +1,36 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Item } from 'src/app/shared/item.model';
-import {ItemService} from "../item.service";
+import {ItemService} from "../../shared/services/item.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-item-edit',
   templateUrl: './item-edit.component.html',
   styleUrls: ['./item-edit.component.scss']
 })
-export class ItemEditComponent {
-  // @ts-ignore
-  @Input() item: Item;
+export class ItemEditComponent implements OnInit{
 
-  constructor(private recipeService: ItemService) { }
+  item!: Item;
+
+  constructor(private itemService: ItemService,
+              private route: ActivatedRoute
+  ) {
+
+  }
+
+  ngOnInit(){
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          // @ts-ignore
+          this.item = this.itemService.getItem(+params['id'])
+        }
+      )
+  }
+
+
+
+  onSubmit() {
+  }
+
 }

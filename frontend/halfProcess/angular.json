@@ -28,11 +28,12 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/ng-devui/devui.min.css",
-              "node_modules/ng-devui/styles-var/devui-var.scss"
+              "node_modules/ng-devui/styles-var/devui-var.scss",
+              "node_modules/@devui-design/icons/icomoon/devui-icon.css"
             ],
-
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/crypto-js/sha256.js"
             ]
           },
           "configurations": {

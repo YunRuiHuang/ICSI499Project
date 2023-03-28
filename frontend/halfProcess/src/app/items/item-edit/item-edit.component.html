@@ -1,18 +1,35 @@
-<div
-  class="card-item">
-  <d-card-header>
-    <d-avatar dCardAvatar [imgSrc]="item.itemImageURL"></d-avatar>
-    <d-card-title>{{item.itemName}}</d-card-title>
-    <d-card-subtitle><span>{{item.itemPrice}}</span></d-card-subtitle>
-  </d-card-header>
-
-  <img dCardMeta [src]="item.itemImageURL">
-  <d-card-content>
-    {{item.itemDescription}}
-  </d-card-content>
-
-  <d-card-actions [align]="'spaceBetween'">
-    <d-button bsStyle="primary"> Confirm </d-button>
-    <d-button bsStyle="common"> Cancel </d-button>
-  </d-card-actions>
+<div class="item-edit">
+  <h2 class="item-edit__title">Edit Item</h2>
+  <div class="container mt-5">
+    <form class="row g-3" (ngSubmit)="onSubmit()" #itemForm="ngForm">
+      <div class="col-md-6">
+        <label for="itemName" class="form-label">Item Name</label>
+        <input type="text" class="form-control" id="itemName" name="itemName" [(ngModel)]="item.itemName" required>
+      </div>
+      <div class="col-md-6">
+        <label for="itemPrice" class="form-label">Item Price</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="number" class="form-control" id="itemPrice" name="itemPrice" [(ngModel)]="item.itemPrice" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="itemLocation" class="form-label">Item Location</label>
+        <input type="text" class="form-control" id="itemLocation" name="itemLocation" [(ngModel)]="item.itemLocation" required>
+      </div>
+      <div class="col-md-6">
+        <label for="itemImageURL" class="form-label">Item Image URL</label>
+        <input type="text" class="form-control" id="itemImageURL" name="itemImageURL" [(ngModel)]="item.itemImageURL" required>
+      </div>
+      <div class="col-md-12">
+        <label for="itemDescription" class="form-label">Item Description</label>
+        <textarea class="form-control" id="itemDescription" name="itemDescription" rows="5" [(ngModel)]="item.itemDescription" required></textarea>
+      </div>
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary px-5" [disabled]="itemForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
 </div>
+
+{{item.itemName}}

@@ -1,5 +1,6 @@
 export class Item {
   itemID: number
+  userID: number
   itemName: string
   itemPrice: number;
   itemLocation: string;
@@ -9,8 +10,9 @@ export class Item {
   itemKeywords: string[];
 
 
-  constructor(itemID: number, itemName: string, itemPrice: number, itemLocation: string, itemDescription: string, itemImageURL: string, itemKeywords: string[]) {
+  constructor(itemID: number, userID: number, itemName: string, itemPrice: number, itemLocation: string, itemDescription: string, itemImageURL: string, itemKeywords: string[]) {
     this.itemID = itemID;
+    this.userID = userID;
     this.itemName = itemName;
     this.itemPrice = itemPrice;
     this.itemLocation = itemLocation;
@@ -18,4 +20,5 @@ export class Item {
     this.itemImageURL = itemImageURL;
     this.itemKeywords = itemKeywords;
   }
+
 }

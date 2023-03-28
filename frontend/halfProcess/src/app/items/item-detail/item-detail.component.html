@@ -1,1 +1,43 @@
-<p>item-detail works!</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{{selectedItem.itemImageURL}}" class="img-fluid" alt="iPhone X">
+    </div>
+    <div class="col-md-6">
+      <h1 class="fw-bold">${{selectedItem.itemPrice}}</h1>
+      <h2 class="fs-3 mb-3">{{selectedItem.itemName}}</h2>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="text-muted"><strong>Condition:</strong> Used</p>
+        <p class="text-muted"><strong>Location:</strong>{{selectedItem.itemLocation}}</p>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="fw-bold">Description:</p>
+        <p class="text-muted">{{selectedItem.itemDescription}}</p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="fw-bold">Keyword:</p>
+        <ul class="list-group list-group-flush" *ngFor="let keyword of selectedItem.itemKeywords">
+          <li class="list-group-item">
+            <i class="fas fa-hdd me-2"></i>{{keyword}}
+          </li>
+        </ul>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="fw-bold">Delivery:</p>
+        <p class="text-muted">Local pickup or shipping available</p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="fw-bold">Payment:</p>
+        <p class="text-muted">Cash or PayPal accepted</p>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center">
+        <p><strong>Contact:</strong> Email: johndoe@email.com</p>
+        <button class="btn btn-primary"><a href="mailto:gohndoe@gmail.com">Message Seller</a></button>
+
+      </div>
+    </div>
+  </div>
+</div>

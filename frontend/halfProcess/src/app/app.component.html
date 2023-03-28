@@ -1,21 +1,13 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4 col-lg-2"><i class="fas fa-dragon"></i>
-      <hr>
+    <div class="col-md-4 col-lg-2" style="background-color: #f8f9fa;">
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-md-8 col-lg-10">
       <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
-          <div class="row">
-            <app-map></app-map>
-          </div>
-          <div class="row">
-            <app-items></app-items>
-          </div>
-
+          <router-outlet></router-outlet>
         </div>
-
         <footer class="bg-white sticky-footer">
           <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Brand 2023</span></div>
