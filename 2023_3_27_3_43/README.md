@@ -1,27 +1,14 @@
-# HalfProcess
+因为signup要调用signin的方法，创了个新的auth.service.ts, 并把大部分signin，singup逻辑搬过去了
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
 
-## Development server
+为了简明结构，把signin，signup组件挪到新建的authservice文件夹里了
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+可以检测用户登录注册是否成功，如果失败在网页上显示通知，login在response里检查，signup直接用response和error区分，都在auth.service.ts文件里
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+登录成功会this.user.next(user);推出一个用户，没推出前为空
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+用户有它在数据库user表里的全部数据，以及getter，setter方法以便使用
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
