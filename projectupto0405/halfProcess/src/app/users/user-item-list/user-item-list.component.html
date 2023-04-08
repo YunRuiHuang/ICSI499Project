@@ -1,0 +1,25 @@
+<body>
+  <div class="container py-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Product Card -->
+      <div class="col"
+           *ngFor="let item of items"
+      >
+        <div class="card shadow-sm">
+          <img src="{{item.itemImageURL}}" class="card-img-top" alt="Product Image">
+          <div class="card-body">
+            <h5 class="card-title">{{item.itemName}}</h5>
+            <p class="card-text">{{item.itemDescription}}</p>
+            <p class="card-text fw-bold">${{item.itemPrice}}</p>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-primary"  (click) = onSelected(item)>Edit</button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</body>

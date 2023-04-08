@@ -1,0 +1,82 @@
+<div class="container rounded bg-white mt-5 mb-5 gradient" style="overflow: scroll">
+
+  <div class="d-flex justify-content-center align-items-center" style="margin-top: 200px"  *ngIf="!user">
+    <div class="p-3 py-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-right" style="color: red">This is profile page, you need to login to have access here</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row " *ngIf="!!user">
+
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        <img src="{{user.getProfileImgId()}}" alt="" width="180" height="180" class="rounded-circle me-2" *ngIf="user.profile_img_id!=null">
+        <img src="./assets/empty_Avatar.png"
+             alt="" width="180" height="180" class="rounded-circle me-2" *ngIf="user.profile_img_id==null">
+        <span class="font-weight-bold">{{user.getUserName()}}</span><span class="text-black-50">{{user.getEmail()}}</span></div>
+    </div>
+
+
+    <div class="col-md-5 border-right">
+      <div class="p-3 py-5" *ngIf="editing">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">User Profile</h4>
+        </div>
+        <div>
+          <form #authForm="ngForm" (ngSubmit)="editpage(authForm)">
+        <div class="row mt-2">
+          <div class="col-md-6"><label class="form-label labels" for="editusername">UserName</label>
+            <input type="text" id="editusername" class="form-control" required name="userName" [(ngModel)]="user.user_name"></div>
+          <div class="col-md-6"><label class="form-label labels" for="editrealname">Real name</label>
+            <input type="text" id="editrealname" class="form-control" required name="realName" [(ngModel)]="user.real_name"></div>
+        </div>
+        <hr class="hrcolor">
+        <div class="row mt-3">
+          <div class="col-md-12"><label class="form-label labels" for="editlocation">Location</label>
+            <input type="text" id="editlocation" class="form-control" required name="location" [(ngModel)]="user.location" ></div>
+          <div class="col-md-12"><label class="form-label labels" for="editbio">bio</label>
+            <input type="text" id="editbio"class="form-control"  required name="bio" [(ngModel)]="user.bio"></div>
+          <div class="col-md-12"><label class="form-label labels" for="editavatar">avatar</label>
+            <input type="text"id="editavatar" class="form-control" required name="profileImgId"  [(ngModel)]="user.profile_img_id"></div>
+          <div class="col-md-12"><label class="form-label labels" for="editother">Others</label>
+            <input type="text"id="editother" class="form-control"  required name="other" [(ngModel)]="user.other_info"></div>
+        </div>
+        <hr class="hrcolor">
+        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="p-3 py-5" *ngIf="!editing">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profiles</h4>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6"><label class="labels">UserName:</label><p class="content">{{user.getUserName()}}</p></div>
+          <div class="col-md-6"><label class="labels">Real name:</label><p class="content">{{user.getRealName()}}</p></div>
+        </div>
+        <hr class="hrcolor">
+        <div class="row mt-3">
+          <div class="col-md-12" style="margin-bottom: 20px;"><label class="labels">Email:</label><p class="content">{{user.getEmail()}}</p></div>
+          <hr class="hrcolor">
+          <div class="col-md-12" style="margin-bottom: 20px;"><label class="labels">Location:</label><p class="content">{{user.getLocation()}}</p></div>
+          <hr class="hrcolor">
+          <div class="col-md-12" style="margin-bottom: 20px;"><label class="labels">BIO:</label><p class="content">{{user.getBio()}}</p></div>
+          <hr class="hrcolor">
+          <div class="col-md-12" style="margin-bottom: 20px;"><label class="labels">Other:</label><p class="content">{{user.getOther()}}</p></div>
+          <hr class="hrcolor">
+        </div>
+
+        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" (click)="editing=true">Edit Profile</button></div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+body {
+  background-color: #f2f2f2;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.card-link {
+  font-size: 1rem;
+}
