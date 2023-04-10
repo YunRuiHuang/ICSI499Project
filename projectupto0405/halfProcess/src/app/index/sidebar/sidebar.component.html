@@ -41,9 +41,9 @@
 <!--    position-fixed bottom-0 start-0-->
     <div class="dropdown" style="float: right">
       <div class="btn-group" dDropDown (toggleEvent)="onToggle($event)">
-        <img src="./assets/jilongImage.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <img src="{{profile_img_id}}" alt="" width="32" height="32" class="rounded-circle me-2">
         <d-icon dDropDownToggle [icon]="'icon-select-arrow'" [operable]="true" [rotate]="rotateDegrees">
-          <span iconPrefix>Jilong</span>
+          <span iconPrefix>{{username}}</span>
         </d-icon>
         <ul dDropDownMenu class="devui-dropdown-menu" role="menu">
           <li role="menuitem" routerLinkActive="active">

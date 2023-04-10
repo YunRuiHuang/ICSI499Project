@@ -10,7 +10,8 @@ export class User{
   password: string;
   has_items_list: number;
   other_info: string | null;
-  _token:string;
+  _token:boolean;
+  expirationTime: Date;
 
   constructor(
     user_id: number,
@@ -23,6 +24,7 @@ export class User{
     password: string,
     has_items_list: number,
     other_info: string | null,
+    expirationTime: Date,
   ) {
     this.user_id = user_id;
     this.user_name = user_name;
@@ -34,7 +36,8 @@ export class User{
     this.password = password;
     this.has_items_list = has_items_list;
     this.other_info = other_info;
-    this._token = "AuthUser";
+    this._token = true;
+    this.expirationTime=expirationTime;
   }
 
   getUserId() {
@@ -114,10 +117,10 @@ export class User{
     this.other_info = info;
   }
 
-  get token(){
-    // if (!this.tokenExpirationDate||new Date()>this.tokenExpirationDate) {
-    //   return null;
-    // }
+  getToken(){
+    if (!this.expirationTime||new Date()>this.expirationTime) {
+      return false;
+    }
     return this._token;
   }
 

@@ -29,9 +29,11 @@ export class AuthService {
         else {
           this.loginSuccessState.next(false);
           const user=new User(response.user_id,response.user_name,response.real_name,response.email,
-            response.location,response.profile_img_id,response.bio,response.password,response.has_items_list,response.other_info);
+            response.location,response.profile_img_id,response.bio,response.password,response.has_items_list,response.other_info,new Date(new Date().getTime()+24*60*60*1000));
           console.log(user);
           this.user.next(user);
+          localStorage.removeItem('userData');
+          localStorage.setItem('userData',JSON.stringify(user));
           this.router.navigate(['map']);
 
         }
@@ -80,6 +82,37 @@ export class AuthService {
   }
   logout(){
     this.user.next(null);
+    localStorage.removeItem('userData');
+  }
+
+  autoLogin(){
+const aData=localStorage.getItem('userData');
+if(!aData){
+  return;
+}
+const userData:{
+  user_id: number;
+  user_name: string;
+  real_name: string;
+  email: string;
+  location: string;
+  profile_img_id: string | null;
+  bio: string | null;
+  password: string;
+  has_items_list: number;
+  other_info: string | null;
+  _token:boolean;
+  expirationTime:string;
+
+}=JSON.parse(aData);
+const loaduser=new User(userData.user_id,userData.user_name,userData.real_name,userData.email,userData.location
+  ,userData.profile_img_id,userData.bio,userData.password,userData.has_items_list
+  ,userData.other_info,new Date(userData.expirationTime));
+    if(loaduser.getToken()) {
+      this.user.next(loaduser);
+      this.router.navigate(['map']);
+    }
+else return;
   }
 
 
@@ -98,8 +131,12 @@ export class AuthService {
     const myurl='http://localhost:3001/user/'+form.value.userid;
     this.http.put(myurl,form.value).subscribe(observer);
 
-
   }
+
+  refrashInfor(auser:User){
+    this.user.next(auser);
+  }
+
 
 
 }
