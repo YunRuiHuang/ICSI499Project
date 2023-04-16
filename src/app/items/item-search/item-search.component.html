@@ -1,0 +1,10 @@
+<p>item-search works!</p>
+<div>
+  <input type="text" [(ngModel)]="searchInput">
+  <button (click)="search()">Search</button>
+</div>
+<ng-container *ngIf="searchResults && searchResults.length">
+  <div *ngFor="let result of searchResults">
+    {{result.id}} - {{result.times}}
+  </div>
+</ng-container>
