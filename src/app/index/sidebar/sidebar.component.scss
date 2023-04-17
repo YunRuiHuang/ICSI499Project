@@ -1,0 +1,15 @@
+.sidebar-container {
+  position: fixed;
+  height: 100%; /* make sure the sidebar fills the height of the viewport */
+  overflow-y: auto; /* add a scrollbar to the sidebar if its content overflows */
+  width: auto;
+}
+.icon-marketplace {
+  font-size: 36px;
+}
+
+.f3-4 {
+  font-family: "Arial Black", sans-serif;
+  font-size: 36px;
+  text-transform: uppercase;
+}
