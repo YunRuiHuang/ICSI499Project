@@ -15,7 +15,7 @@
       </div>
       <div class="col-md-6">
         <label for="itemLocation" class="form-label">Item Location</label>
-        <input type="text" class="form-control" id="itemLocation" name="itemLocation" [(ngModel)]="item.itemLocation" required>
+        <input #autocomplete type="text" class="form-control" id="itemLocation" name="itemLocation" [(ngModel)]="item.itemLocation" required>
       </div>
       <div class="col-md-6">
         <label for="itemImageURL" class="form-label">Item Image URL</label>

@@ -1,4 +1,4 @@
-<!-- add-item.component.html -->
+
 <div class="container my-4">
   <div class="row">
     <div class="col-md-6 mx-auto">
@@ -20,16 +20,8 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="itemCondition" class="form-label">Condition</label>
-          <select class="form-select" id="itemCondition" required>
-            <option value="" disabled selected>Select condition</option>
-            <option>New</option>
-            <option>Used</option>
-          </select>
-        </div>
-        <div class="mb-3">
           <label for="itemLocation" class="form-label">Location</label>
-          <input type="text" class="form-control" id="itemLocation" placeholder="Enter item location" [(ngModel)]="body.itemLocation" [ngModelOptions]="{standalone: true}">
+          <input #autocomplete type="text" class="form-control" id="itemLocation" placeholder="Enter item location">
         </div>
         <div class="mb-3">
           <label for="itemImage" class="form-label">Image</label>

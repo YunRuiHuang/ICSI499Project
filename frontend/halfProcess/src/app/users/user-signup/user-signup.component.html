@@ -1,5 +1,5 @@
 <section class="vh-100 gradient-custom">
-  <div class="container py-5 h-100">
+  <div class="container py-2 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
@@ -8,11 +8,14 @@
             <div class="mb-md-2 mt-md-2 pb-5">
               <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
                 <h2 class="fw-bold mb-2 text-uppercase">Sign up</h2>
-                <p class="text-white-50 mb-2">Please enter your username, email, location and password!</p>
+                <p class="text-white-50 mb-2">Please enter your username, realname, email, location and password!</p>
 
                 <div class="form-outline form-white mb-2">
                   <input type="text" id="typeUserName" class="form-control form-control-lg" required ngModel name="userName" />
                   <label class="form-label" for="typeUserName" >Username</label>
+
+                  <input type="text" id="typeRealName" class="form-control form-control-lg" required ngModel name="realName" />
+                  <label class="form-label" for="typeRealName" >Realname</label>
 
                   <input type="email" id="typeEmail" class="form-control form-control-lg" required ngModel name="email" email/>
                   <label class="form-label" for="typeEmail">Email</label>
@@ -24,13 +27,17 @@
                   <label class="form-label" for="typeLocation">Location</label>
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!authForm.valid">Sign Up</button>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!authForm.valid" >Sign Up</button>
               </form>
 
             </div>
 
+            <div class="alert alert-danger" *ngIf="!signupState">
+              <p>Signup fail, same email exist</p>
+            </div>
+
             <div>
-              <p class="mb-0">Have a account? <a href="#!" class="text-white-50 fw-bold">Sign In</a>
+              <p class="mb-0">Have a account? <a routerLink="/users/user-login" class="text-white-50 fw-bold">Sign In</a>
               </p>
             </div>
 

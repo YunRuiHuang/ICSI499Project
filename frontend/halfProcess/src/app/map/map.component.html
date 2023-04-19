@@ -1,7 +1,29 @@
+<!--<div class="container-fluid">-->
+<!--  <div class="d-sm-flex justify-content-between align-items-center mb-4">-->
+<!--    <h3 class="text-dark mb-0">Dashboard</h3>-->
+<!--  </div>-->
+<!--  <iframe class="d-lg-flex align-items-lg-center" allowfullscreen="" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCnRB4qa2YPreHaPelqeIs7vUxZtUTNQBM&amp;q=university+at+albany%2C+new+york&amp;zoom=14" width="100%" height="602"></iframe>-->
+<!--  <hr>-->
+<!--</div>-->
 <div class="container-fluid">
-  <div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Dashboard</h3>
-  </div>
-  <iframe class="d-lg-flex align-items-lg-center" allowfullscreen="" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCnRB4qa2YPreHaPelqeIs7vUxZtUTNQBM&amp;q=university+at+albany%2C+new+york&amp;zoom=14" width="100%" height="602"></iframe>
-  <hr>
+
+  <google-map
+    height="700px"
+    width="100%"
+    [zoom]="zoom"
+    [center]="center"
+    [options]="options"
+  >
+    <map-marker
+      #markerElem="mapMarker"
+      *ngFor="let marker of markers"
+      [position]="marker.position"
+      [title]="marker.title"
+      [options]="marker.options"
+      (mapClick)="openInfo(markerElem, marker.info)"
+      (mapDblclick)="goToItemDetail(marker.itemID)"
+    >
+    </map-marker>
+    <map-info-window>{{ infoContent }}</map-info-window>
+  </google-map>
 </div>

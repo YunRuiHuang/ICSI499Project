@@ -34,7 +34,5 @@ export class UserLoginComponent implements OnInit{
     this.router.navigate(['users/user-item-list']);
   }
 
-  temp() {
-    this.router.navigate(['users/user-signup']);
-  }
+
 }

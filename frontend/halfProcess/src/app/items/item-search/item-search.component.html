@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Item Search</h1>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="searchInput" placeholder="Search">
+    <button class="btn btn-outline-secondary" type="button" (click)="search()">Search</button>
+  </div>
+  <ng-container *ngIf="searchResults && searchResults.length">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let result of searchResults">{{result.id}} - {{result.times}}</li>
+    </ul>
+  </ng-container>
+</div>

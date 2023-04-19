@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DevUIModule } from 'ng-devui';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './index/sidebar/sidebar.component';
 import { FormsModule } from "@angular/forms";
@@ -19,6 +19,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { UserItemListComponent } from './users/user-item-list/user-item-list.component';
 import {ItemService} from "./shared/services/item.service";
 import { UserLoginComponent } from './users/user-login/user-login.component';
+import { ItemSearchComponent } from './items/item-search/item-search.component';
+import { ItemSearchListComponent } from './items/item-search-list/item-search-list.component';
+import {ProfilesComponent} from "./users/profiles/profiles.component";
+import {GoogleMapsModule} from "@angular/google-maps";
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
     UserSignupComponent,
     UserItemListComponent,
     UserLoginComponent,
+    ItemSearchComponent,
+    ItemSearchListComponent,
+    ProfilesComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,9 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
     DevUIModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    GoogleMapsModule
   ],
   providers: [
   ],
