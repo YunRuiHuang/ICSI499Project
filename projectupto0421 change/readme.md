@@ -1,6 +1,6 @@
 
-在item-detail.component.ts里添加一个变量\n
-  contactEmail!:string;
+在item-detail.component.ts里添加一个变量
+ contactEmail!:string;
   
 在item-detail.component.ts的constructor里添加一个参数
   private http: HttpClient
@@ -25,9 +25,14 @@ getContactEmail(userID:string){
   this.http.get(myurl).subscribe(observer);
 }
 
+	
+	
+	
 
 在item-detail.component.html里做一处修改
+	
 将如下位置那里hard code的email改成{{this.contactEmail}}
+	
 <body>
     <pre>
 &lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Email: {{this.contactEmail}}&lt;/p&gt;
