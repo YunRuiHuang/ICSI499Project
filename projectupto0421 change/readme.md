@@ -1,5 +1,5 @@
 
-在item-detail.component.ts里添加一个变量
+在item-detail.component.ts里添加一个变量\n
   contactEmail!:string;
   
 在item-detail.component.ts的constructor里添加一个参数
