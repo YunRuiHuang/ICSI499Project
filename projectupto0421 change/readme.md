@@ -28,4 +28,4 @@ getContactEmail(userID:string){
 
 在item-detail.component.html里做一处修改
 将如下位置那里hard code的email改成{{this.contactEmail}}
-<<p><strong>Contact:</strong> Email: {{this.contactEmail}}</p>>
+<p>"<p><strong>Contact:</strong> Email: {{this.contactEmail}}</p>"</p>
