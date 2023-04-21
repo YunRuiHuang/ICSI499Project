@@ -25,6 +25,18 @@ getContactEmail(userID:string){
   this.http.get(myurl).subscribe(observer);
 }
 
+在item-detail.component.ts里的ngOnInit()里添加一行代码：this.getContactEmail(this.selectedItem.userID.toString());位置如下
+  ngOnInit(){
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          // @ts-ignore
+          this.selectedItem = this.itemService.getItem(+params['id']);
+          this.getContactEmail(this.selectedItem.userID.toString());
+        }
+    )
+    console.log(this.selectedItem)
+  }
 	
 	
 	
