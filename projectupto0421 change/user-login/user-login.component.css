@@ -1,0 +1,8 @@
+.gradient {
+  background: #ADB9E8;
+  height: 100vh;
+  background: linear-gradient(to bottom, #FFFFFF,#ADB9E8 );
+}
+.cardColor {
+  background: #687bc9;
+}
