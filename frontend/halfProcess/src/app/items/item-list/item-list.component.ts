@@ -37,6 +37,7 @@ export class ItemListComponent implements OnInit {
     this.userId=this.user?.getUserId();
     this.itemService.refreshUesrItemlist(this.userId);
     this.items = this.itemService.getItems();
+    console.log(this.userId)
   }
 
   onSelected(item: Item) {

@@ -30,9 +30,5 @@ export class UserLoginComponent implements OnInit{
 
   }
 
-  onSubmit() {
-    this.router.navigate(['users/user-item-list']);
-  }
-
 
 }

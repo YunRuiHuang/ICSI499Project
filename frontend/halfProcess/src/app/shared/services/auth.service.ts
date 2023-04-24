@@ -110,7 +110,7 @@ const loaduser=new User(userData.user_id,userData.user_name,userData.real_name,u
   ,userData.other_info,new Date(userData.expirationTime));
     if(loaduser.getToken()) {
       this.user.next(loaduser);
-      this.router.navigate(['map']);
+      //this.router.navigate(['map']);
     }
 else return;
   }
