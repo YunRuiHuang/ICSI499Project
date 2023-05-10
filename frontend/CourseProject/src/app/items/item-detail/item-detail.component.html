@@ -7,7 +7,7 @@
       <h1 class="fw-bold">${{selectedItem.itemPrice}}</h1>
       <h2 class="fs-3 mb-3">{{selectedItem.itemName}}</h2>
       <div class="d-flex justify-content-between align-items-center">
-        <p class="text-muted"><strong>Condition:</strong> Used</p>
+<!--        <p class="text-muted"><strong>Condition:</strong> Used</p>-->
         <p class="text-muted"><strong>Location:</strong>{{selectedItem.itemLocation}}</p>
       </div>
       <hr>
@@ -16,7 +16,7 @@
         <p class="text-muted">{{selectedItem.itemDescription}}</p>
       </div>
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <p class="fw-bold">Keyword:</p>
+<!--        <p class="fw-bold">Keyword:</p>-->
         <ul class="list-group list-group-flush" *ngFor="let keyword of selectedItem.itemKeywords">
           <li class="list-group-item">
             <i class="fas fa-hdd me-2"></i>{{keyword}}

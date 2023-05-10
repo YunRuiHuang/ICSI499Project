@@ -25,7 +25,7 @@
         </div>
         <div class="mb-3">
           <label for="itemImage" class="form-label">Image</label>
-          <input type="file" class="form-control" id="itemImage" accept="image/*" [(ngModel)]="body.itemImgId" [ngModelOptions]="{standalone: true}">
+          <input type="text" class="form-control" id="itemImage"  [(ngModel)]="body.itemImgId" [ngModelOptions]="{standalone: true}">
         </div>
         <button type="submit" class="btn btn-primary">Add Item</button>
       </form>
