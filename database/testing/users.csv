@@ -1,0 +1,8 @@
+"user_id","user_name","real_name","email","location","profile_img_id","bio","password","has_items_list","other_info"
+"2","daniel","yanzu","test@albany.edu","albany, new york",,"Daniel Ng Neh-Tsu (Chinese: 吳彥祖) is a Hong Kong actor, director and producer, born in California of the United States on September 30, 1974. He is known as a ""flexible and distinctive"" leading actor in the Chinese language film industry. Since his film debut in 1998, he has been featured in over 60 films.","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","0",
+"3","crisWu","yifan","yifan@albany.edu","albany, new york","https://e0.365dm.com/10/03/800x600/Cris_2429550.jpg?20100311112155","123456","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","0","123"
+"4","PerfecrChaos117","Sean Vassi","vman444@live.com","Amsterdam NY",,,"7ab100eeff9dc708925fc3d9e4152e410a3f7e003401a1ad7e40a52fc5204555","0",
+"5","testuser","huyi","test@test.com","albany, new york",,"my bio","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","0",
+"7","testuser","jilong","test@t.com","albany, new york",,"new bio","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","0",
+"8","testuser1","jilong","testemail@test.com","albany, new york",,"new bio","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","0",
+"9","testuser2","uu","teste@text.com","albany, new york",,"new bio","8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92","0",

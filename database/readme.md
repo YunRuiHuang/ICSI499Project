@@ -16,6 +16,8 @@ docker run --name mysql --network my-network -p 3000:3306 -e MYSQL_ROOT_PASSWORD
 #set up the last version mysql at port 3000
 ```
 
+**To testing the database with data, Please using the .csv file in the [testing](./testing) folder to import to the MySQL database. The file name is same as the table name.**
+
 
 
 ### User table
