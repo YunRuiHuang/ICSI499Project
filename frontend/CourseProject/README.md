@@ -1,22 +1,64 @@
-# HalfProcess
+# Capstone Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
 
-## Development server
+## Clone the repository:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Install Node.js and npm (if not already installed) from [Node.js website](https://nodejs.org/).
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm i ng-devui
 
-## Build
+npm i @devui-design/icons
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+npm i Bootstrap
 
-## Running unit tests
+npm i qrcode
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+npm install crypto-js
+```
+
+
+
+## Usage
+
+1. Build the project:
+
+   ```
+   ng build
+   ```
+
+2. Serve the project locally:
+
+   ```
+   ng serve
+   ```
+
+   This command will start a local development server at `http://localhost:4200/`. Open this URL in your browser to view the project.
+
+3. Explore the project and its features.
+
+
+
+### Styles
+
+Include the following styles in your project:
+
+- `src/styles.css`
+- `node_modules/bootstrap/dist/css/bootstrap.css`
+- `node_modules/ng-devui/devui.min.css`
+- `node_modules/ng-devui/styles-var/devui-var.scss`
+- `node_modules/@devui-design/icons/icomoon/devui-icon.css`
+
+### Scripts
+
+Include the following scripts in your project:
+
+- `node_modules/bootstrap/dist/js/bootstrap.js`
+- `node_modules/crypto-js/sha256.js`
+- `node_modules/qrcode/build/qrcode.js`
 
 ## Running end-to-end tests
 
