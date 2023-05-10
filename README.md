@@ -9,7 +9,7 @@ This is the 2023 Spring ICSI 499 Team 8 project
 
 ## Frontend Readme
 
-[ReadMe](./frontend/README.md)
+[ReadMe](./frontend/CourseProject/README.md)
 
 
 
